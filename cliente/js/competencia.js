@@ -10,8 +10,15 @@ function CompetenciasController () {
 
 		// Se obtiene de la api el listado de competencias
 		$.getJSON(server+"/competencias", function (data) {
+			//se verifica que existan al menos dos competencias
+			if (data.length >= 2) {
 				// Se carga la información obtenida en el DOM
 				self.cargarCompetencias(data);
+			}else {
+				//si no existen se redirecciona a crear compentecia
+				location.href ="../html/administrar/crear.html";
+			}
+
 		 });
 	},
 
